@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+sent_log*.txt
+delivery_status*.txt
+send_run_*.txt
+recipients.xlsx
