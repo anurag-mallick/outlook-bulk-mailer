@@ -91,7 +91,8 @@ folder holds the program's internals — you should not need to open it.
 | `App/setup.bat` | Manual setup/reinstall, for troubleshooting only |
 | `App/test_data.xlsx` | Placeholder data for a safe first test run |
 | `App/requirements.txt` | List of required Python packages, for reference |
+| `App/LICENSE` | MIT license text |
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](App/LICENSE).
