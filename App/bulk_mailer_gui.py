@@ -1034,9 +1034,19 @@ class BulkMailerApp:
             skip_count = already_sent_count
             pending_total = len(pending)
 
+            log_subject = subject_template
+            log_body = "".join(chunk for _, chunk in runs)
+            for image in inline_images:
+                log_body = log_body.replace(image["token"], f'[Image: {os.path.basename(image["path"])}]')
+            for table_item in inline_tables:
+                rows, cols = len(table_item["rows"]), (len(table_item["rows"][0]) if table_item["rows"] else 0)
+                log_body = log_body.replace(table_item["token"], f'[Table: {rows} rows x {cols} columns]')
+
             def write_log():
                 with open(log_file, "w", encoding="utf-8") as f:
                     f.write(f"Bulk Email Log — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n" + "=" * 60 + "\n")
+                    f.write(f"Subject: {log_subject}\n\n")
+                    f.write("Body:\n" + log_body + "\n" + "=" * 60 + "\n\n")
                     for e in entries:
                         f.write(e + "\n")
 
