@@ -44,7 +44,7 @@ ever fails, see [Troubleshooting](#troubleshooting) below.
 
 ## Using your own recipient list (once you've tried the quick start)
 
-1. **Try it safely first, with `test_data.xlsx`.** Open it, replace the
+1. **Try it safely first, with `App/test_data.xlsx`.** Open it, replace the
    placeholder addresses with one or two of your own, and load that file in
    Step 1 the first time — so you see exactly what the email looks like
    before sending to anyone real.
@@ -72,21 +72,25 @@ runs. If it ever reports that setup failed:
 
 - Check your internet connection, or ask IT if a company proxy is blocking
   Python package installs.
-- Try running `setup.bat` directly — it performs the same install with more
-  detailed messages, and can also be used to force a clean reinstall if
+- Try running `App/setup.bat` directly — it performs the same install with
+  more detailed messages, and can also be used to force a clean reinstall if
   something gets into a bad state.
 - If it still fails, share the on-screen error message with your IT support.
 
 ## Files
 
+Everything you need to touch day to day lives at the top level. The `App`
+folder holds the program's internals — you should not need to open it.
+
 | File | Purpose |
 |------|---------|
-| `bulk_mailer_gui.py` | The application itself |
 | `Send Bulk Mail.bat` | The only file you need to double-click — sets up on first run, then launches |
-| `setup.bat` | Manual setup/reinstall, for troubleshooting only |
 | `recipients_template.xlsx` | Copy this to build your real recipient list |
-| `test_data.xlsx` | Placeholder data for a safe first test run |
 | `sent_log_*.txt` | Created automatically per send campaign (git-ignored) |
+| `App/bulk_mailer_gui.py` | The application itself |
+| `App/setup.bat` | Manual setup/reinstall, for troubleshooting only |
+| `App/test_data.xlsx` | Placeholder data for a safe first test run |
+| `App/requirements.txt` | List of required Python packages, for reference |
 
 ## License
 

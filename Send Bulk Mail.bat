@@ -61,7 +61,7 @@ if errorlevel 1 (
 
 where pythonw >nul 2>nul
 if errorlevel 1 (
-    start "" python bulk_mailer_gui.py
+    start "" python "App\bulk_mailer_gui.py"
 ) else (
-    start "" pythonw bulk_mailer_gui.py
+    start "" pythonw "App\bulk_mailer_gui.py"
 )
