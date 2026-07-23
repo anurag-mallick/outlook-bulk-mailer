@@ -2,8 +2,13 @@
 setlocal
 
 echo ============================================================
-echo  BULK MAILER - ONE-TIME SETUP
+echo  BULK MAILER - MANUAL SETUP / REINSTALL
 echo ============================================================
+echo.
+echo  You normally don't need this file - just double-click
+echo  "Send Bulk Mail.bat" and it will set itself up automatically the
+echo  first time. Use this file only if that didn't work, or if you
+echo  want to force a clean reinstall of the required components.
 echo.
 
 where python >nul 2>nul

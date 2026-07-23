@@ -6,6 +6,19 @@ installed Microsoft Outlook. Each recipient sees their own name, company, or
 any other detail you add as a column in the spreadsheet. No coding required
 to use it.
 
+## Quick start (no technical knowledge needed)
+
+1. Download this project and open its folder.
+2. **Double-click `Send Bulk Mail.bat`.** That's it — the first time you run
+   it, it quietly installs everything it needs (a minute or two, with
+   messages on screen so you know it's working), then opens the tool. Every
+   time after that, it just opens straight away.
+3. In the window that opens, follow Steps 1 through 6 from top to bottom. A
+   green message near the top always tells you exactly what to do next.
+
+That one file is the only thing you ever need to double-click. If step 2
+ever fails, see [Troubleshooting](#troubleshooting) below.
+
 ## Features
 
 - **Mail-merge from Excel** — load a spreadsheet, pick the email (and
@@ -26,26 +39,15 @@ to use it.
 ## Requirements
 
 - Windows, with Microsoft Outlook installed and configured with an account.
-- Python 3.9+.
+- Python 3.9+ — if it's missing, `Send Bulk Mail.bat` tells you exactly
+  where to get it and stops cleanly; just run it again afterward.
 
-## Installation
+## Using your own recipient list (once you've tried the quick start)
 
-```powershell
-git clone <this-repo-url>
-cd "Outlook Bulk Mailer"
-.\setup.bat
-```
-
-`setup.bat` checks for Python, installs the dependencies in
-`requirements.txt` (`pywin32`, `pandas`, `openpyxl`), and registers `pywin32`
-with Windows (required for Outlook automation).
-
-## Usage
-
-1. **Try it safely first.** Open `test_data.xlsx`, replace the placeholder
-   addresses with one or two of your own, and use it as your Excel file the
-   first time through the steps below — so you see exactly what the email
-   looks like before sending to anyone real.
+1. **Try it safely first, with `test_data.xlsx`.** Open it, replace the
+   placeholder addresses with one or two of your own, and load that file in
+   Step 1 the first time — so you see exactly what the email looks like
+   before sending to anyone real.
 2. **Build your real recipient list.** Copy `recipients_template.xlsx`,
    read the "Instructions" sheet inside it, and fill in the "Recipients" and
    "Custom Fields" sheets. Save it under a new name in this folder.
@@ -54,22 +56,34 @@ with Windows (required for Outlook automation).
    some Outlook/Exchange setups, mail is sent from whichever account is set
    as default regardless of the in-app selection — this is the only
    reliable way to control the "from" address.
-4. **Double-click `Send Bulk Mail.bat`.** Follow the six steps in the
-   window: load the Excel file, choose the email/CC columns, insert any
-   field tokens you want, write the subject and message, attach files if
-   needed, then connect to Outlook and send.
+4. Load that file in Step 1 instead of the test data, and continue through
+   Steps 2-6: choose the email/CC columns, insert any field tokens you want,
+   write the subject and message, attach files if needed, then connect to
+   Outlook and send.
 
 Emails are sent using only the Excel file loaded at the moment you click
 Send — if you edit that file afterward, click "Load Recipients" again before
 sending.
+
+## Troubleshooting
+
+`Send Bulk Mail.bat` sets everything up automatically the first time it
+runs. If it ever reports that setup failed:
+
+- Check your internet connection, or ask IT if a company proxy is blocking
+  Python package installs.
+- Try running `setup.bat` directly — it performs the same install with more
+  detailed messages, and can also be used to force a clean reinstall if
+  something gets into a bad state.
+- If it still fails, share the on-screen error message with your IT support.
 
 ## Files
 
 | File | Purpose |
 |------|---------|
 | `bulk_mailer_gui.py` | The application itself |
-| `Send Bulk Mail.bat` | Double-click to launch |
-| `setup.bat` | One-time dependency installation |
+| `Send Bulk Mail.bat` | The only file you need to double-click — sets up on first run, then launches |
+| `setup.bat` | Manual setup/reinstall, for troubleshooting only |
 | `recipients_template.xlsx` | Copy this to build your real recipient list |
 | `test_data.xlsx` | Placeholder data for a safe first test run |
 | `sent_log_*.txt` | Created automatically per send campaign (git-ignored) |
